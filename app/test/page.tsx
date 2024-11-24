@@ -5,10 +5,6 @@ import Counter from "./counter"
 import ContextCounter from "./context-clicker"
 import {CounterProvider} from './context-counter-provider'
 
-function Item({ name, loggedIn } : { name: string, loggedIn: boolean })  {
-  return <li className="item">{loggedIn ? name + 'is logged in' : name + 'isn\'t logged in'} </li>;
-}
-
 export default function Home() {
   return (
     <div>

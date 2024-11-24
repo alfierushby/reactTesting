@@ -1,18 +1,15 @@
 'use client'
 
-import Image from "next/image";
 import {details} from "./data.js"
+import {LoginProvider} from './context-login-provider'
+import LoginItem from "./login-item";
 
-function Item({ name, loggedIn, id} : { name: string, loggedIn: boolean, id: number})  {
-  return <li className="item">{loggedIn ? name + ' is logged in' : name + ' isn\'t logged in'} </li>;
-}
 
 export default function Home() {
     const loginItems = details.map(loginStatus =>
-      <p>
-        <Item name={loginStatus.name} loggedIn={loginStatus.loggedIn} id={loginStatus.id}/>
-      </p>
-
+      <LoginProvider key={loginStatus.id} name={loginStatus.name} loggedIn={loginStatus.loggedIn} id={loginStatus.id} >
+        <LoginItem/>
+      </LoginProvider>
     );
     return <ul>{loginItems}</ul>
 }
